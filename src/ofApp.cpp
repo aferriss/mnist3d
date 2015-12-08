@@ -57,13 +57,19 @@ void ofApp::setup(){
         numberImages.push_back( im );
     }
     
-    
-    
+    recorder.setVideoCodec("mpeg4");
+    recorder.setVideoBitrate("50000k");
+    save = false;
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
+    if(save){
+        ofImage savepix;
+        savepix.grabScreen(0, 0, ofGetWidth(), ofGetHeight());
+        recorder.addFrame(savepix.getPixels());
+        
+    }
     
 }
 
@@ -91,7 +97,11 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-
+    if(key == 's'){
+        recorder.setup("mnist3d_"+ofGetTimestampString()+".mp4", ofGetWidth(), ofGetHeight(), 30);
+        recorder.start();
+        save = true;
+    }
 }
 
 //--------------------------------------------------------------
@@ -142,4 +152,9 @@ void ofApp::gotMessage(ofMessage msg){
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
+}
+//--------------------------------------------------------------
+
+void ofApp::exit(){
+    recorder.close();
 }

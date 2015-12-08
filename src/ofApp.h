@@ -1,6 +1,8 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxVideoRecorder.h"
+
 
 class ofApp : public ofBaseApp{
 
@@ -8,6 +10,7 @@ class ofApp : public ofBaseApp{
 		void setup();
 		void update();
 		void draw();
+        void exit();
 
 		void keyPressed(int key);
 		void keyReleased(int key);
@@ -31,4 +34,7 @@ class ofApp : public ofBaseApp{
         vector<float> labels;
         vector<ofImage> numberImages;
         vector<ofMesh> particles;
+    
+        ofxVideoRecorder recorder;
+        bool save;
 };
