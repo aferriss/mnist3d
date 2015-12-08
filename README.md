@@ -9,4 +9,4 @@ https://lvdmaaten.github.io/tsne/code/tsne_python.zip
 You'll have to generate the number textures yourself. I've made a (messy) utility to do so located
 https://github.com/aferriss/mnist2image/blob/master/mnist.py
 
-
+Uses timothy scaffedi's ofxVideoRecorder add on (s key to save)
